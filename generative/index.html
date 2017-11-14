@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lil animal heads</title>
+    <script src="resize.js"></script>
+    <script src="script.js"></script>
+    <style type="text/css" media="screen">
+      canvas {
+        padding: 5px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      var SPRITE_SCALE = 4;
+      var SPRITE_COUNT = 200;
+
+      var animal = new psg.Mask([
+        0,  2,  0,  0,  0,  0,
+        2,  1,  2,  0,  0,  0,
+        2,  1,  1,  1,  0,  0,
+        2,  2,  2,  2, -1, -1,
+        0,  1,  0,  0,  0,  0,
+        0,  0, -1,  0,  0,  0,
+        0, -1,  0,  0, -1,  0,
+        0, -1,  0,  0, -1,  0,
+        0, -1,  0,  0,-1,  0,
+        0, -1,  0,  0,  0,  0,
+        0,  0, -1,  0,  0,  0,
+        0,  0,  0, -1, -1, -1
+      ], 6, 12, true, false);
+
+      var fragment = document.createDocumentFragment();
+
+      var i, sprite, div;
+
+      // Animals
+      div = document.createElement('div');
+
+      for (i = 0; i < SPRITE_COUNT; i++) {
+          sprite = new psg.Sprite(animal);
+          div.appendChild(resize(sprite.canvas, SPRITE_SCALE));
+      }
+
+      fragment.appendChild(div);
+
+      document.body.appendChild(fragment);
+    </script>
+  </body>
+</html>
